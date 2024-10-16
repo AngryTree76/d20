@@ -91,8 +91,8 @@ def test_crit():
 def test_literal():
     assert r("1") == 1
     assert r("10000") == 10000
-    assert r("1.5") == 1
-    assert r("0.5") == r(".5") == 0
+    assert r("1.5") == 1.5
+    assert r("0.5") == r(".5") == 0.5
 
 
 def test_dice():
@@ -124,7 +124,7 @@ def test_binop():
     assert r("2 + 2") == 4
     assert r("2 - 2") == 0
     assert r("2 * 5") == 10
-    assert r("15 / 2") == 7
+    assert r("15 / 2") == 7.5
     assert r("15 // 2") == 7
     assert r("13 % 2") == 1
 
@@ -133,7 +133,7 @@ def test_binop_dice():
     for _ in range(1000):
         assert 3 <= r("2 + 1d6") <= 8
         assert 2 <= r("2 * 1d6") <= 12
-        assert r("60 / 1d6") in [60, 30, 20, 15, 12, 10]
+        assert r("54 / 1d6") in [54, 27, 18, 13.5, 10.8, 9]
         assert r("60 // 1d6") in [60, 30, 20, 15, 12, 10]
         assert r("1d100 % 10") <= 10
         assert r("1d% % 10") <= 10

@@ -85,8 +85,8 @@ class RollResult:
         self.comment = the_roll.comment
 
     @property
-    def total(self) -> int:
-        return int(self.expr.total)
+    def total(self):
+        return self.expr.total
 
     @property
     def result(self) -> str:
